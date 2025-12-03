@@ -1,34 +1,28 @@
 import OpenAI from "openai";
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
-    return;
+    return res.status(405).json({ error: "method not allowed" });
   }
 
   try {
-    const { prompt } = req.body || {};
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY
+    });
 
-    if (!prompt || typeof prompt !== "string") {
-      res.status(400).json({ error: "Missing prompt" });
-      return;
-    }
+    const userMsg = req.body?.message || "";
 
-    const response = await client.responses.create({
+    const reply = await client.responses.create({
       model: "gpt-5.1-mini",
-      input: prompt,
+      input: userMsg
     });
 
     const text =
-      response.output?.[0]?.content?.[0]?.text ?? "No response text.";
+      reply.output?.[0]?.content?.[0]?.text || "…";
 
-    res.status(200).json({ output: text });
-  } catch (error) {
-    console.error("ATOR-AI API error:", error);
-    res.status(500).json({ error: "Internal error from ĀTØR-AI." });
+    return res.status(200).json({ reply: text });
+
+  } catch (e) {
+    return res.status(500).json({ reply: "error." });
   }
 }
