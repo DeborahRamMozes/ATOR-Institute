@@ -23,7 +23,6 @@ export default async function handler(req, res) {
       input: prompt,
     });
 
-    // Extract plain text from Responses API
     const text =
       response.output?.[0]?.content?.[0]?.text ?? "No response text.";
 
