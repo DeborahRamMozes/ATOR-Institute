@@ -44,13 +44,15 @@ body.site-body {
 }
 
 .logo-mark {
-  display: inline-block;
-  background: #0ef1c7;
-  color: #000;
-  padding: 6px 10px;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 14px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #c8f7f4;
+    border: 1px solid #5fc9c4;
+    padding: 4px 10px;
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(95, 201, 196, 0.4);
+    margin-right: 10px;
+    letter-spacing: 1px;
 }
 
 .wordmark {
