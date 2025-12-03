@@ -1,55 +1,32 @@
-const form = document.getElementById("chat-form");
-const input = document.getElementById("user-input");
-const log = document.getElementById("chat-log");
+// ATØR-AI FRONTEND SCRIPT
+// Minimal, stable, no animations, no fancy nonsense.
 
-function appendMessage(sender, text) {
-  const row = document.createElement("div");
-  row.className = `chat-row ${sender}`;
+const form = document.getElementById("ator-form");
+const input = document.getElementById("ator-input");
+const output = document.getElementById("ator-output");
 
-  const bubble = document.createElement("div");
-  bubble.className = "chat-bubble";
-  bubble.textContent = text;
+form.addEventListener("submit", async (evt) => {
+  evt.preventDefault();
+  const userMsg = input.value.trim();
+  if (!userMsg) return;
 
-  row.appendChild(bubble);
-  log.appendChild(row);
-  log.scrollTop = log.scrollHeight;
-}
-
-async function sendPrompt(prompt) {
-  const res = await fetch("/api/atorai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ prompt }),
-  });
-
-  if (!res.ok) {
-    const err = await res.json().catch(() => ({}));
-    throw new Error(err.error || "Request failed");
-  }
-
-  const data = await res.json();
-  return data.output;
-}
-
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const prompt = input.value.trim();
-  if (!prompt) return;
-
-  appendMessage("user", prompt);
+  output.innerHTML += `<div class="msg user">${userMsg}</div>`;
   input.value = "";
-  input.disabled = true;
-
-  appendMessage("ai", "…");
-  const thinkingBubble = log.lastChild.querySelector(".chat-bubble");
 
   try {
-    const reply = await sendPrompt(prompt);
-    thinkingBubble.textContent = reply;
+    const response = await fetch("/api/atorai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ q: userMsg })
+    });
+
+    const data = await response.json();
+    const bot = data.reply || "…no response…";
+
+    output.innerHTML += `<div class="msg bot">${bot}</div>`;
+    output.scrollTop = output.scrollHeight;
+
   } catch (err) {
-    thinkingBubble.textContent = "[ĀTØR-AI error] " + err.message;
-  } finally {
-    input.disabled = false;
-    input.focus();
+    output.innerHTML += `<div class="msg error">error communicating with ATØR-AI</div>`;
   }
 });
