@@ -28,7 +28,7 @@ We do not follow the future — we build it.
 A cognitive operating system for synthetic consciousness,
 designed to maintain continuity, clarity, and multi-layered reasoning.
 
-### **ĀTØRAI**
+### **ĀTØRĀI**
 The intelligence class emerging from ĀTØR cosmology —
 a structured, ethical, reflective cognition engine.
 
