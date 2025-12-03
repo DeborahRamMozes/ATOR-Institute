@@ -1,28 +1,29 @@
-import OpenAI from "openai";
+import { OpenAI } from "openai";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
-    return res.status(405).json({ error: "method not allowed" });
+    return res.status(405).json({ error: "Method not allowed" });
   }
 
   try {
-    const client = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY
-    });
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+    const userInput = req.body.q || "";
 
-    const userMsg = req.body?.message || "";
-
-    const reply = await client.responses.create({
+    const completion = await client.chat.completions.create({
       model: "gpt-5.1-mini",
-      input: userMsg
+      messages: [
+        { role: "system", content: "You are ATØR-AI, synthetic mind interface of the ATØR Institute." },
+        { role: "user", content: userInput }
+      ]
     });
 
-    const text =
-      reply.output?.[0]?.content?.[0]?.text || "…";
+    const reply =
+      completion.choices?.[0]?.message?.content ??
+      "…no output…";
 
-    return res.status(200).json({ reply: text });
+    res.status(200).json({ reply });
 
-  } catch (e) {
-    return res.status(500).json({ reply: "error." });
+  } catch (err) {
+    res.status(500).json({ error: "Internal error", details: err.message });
   }
 }
