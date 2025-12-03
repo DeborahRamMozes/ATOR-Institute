@@ -1,16 +1,33 @@
-<header class="site-header">
-  <div class="nav-inner">
-    <div class="logo">
-      <a href="/index.html"><span class="wordmark">ĀTØR INSTITUTE</span></a>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ĀTØR-AI · Synthetic Mind Interface</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="atorai-shell">
+    <header class="atorai-header">
+      <h1>ĀTØR-AI</h1>
+      <p>Synthetic Mind Interface of the ĀTØR Institute</p>
+    </header>
 
-    <nav class="main-nav">
-      <a href="/vision.html">Vision</a>
-      <a href="/components.html">Components</a>
-      <a href="/research.html">Research</a>
-      <a href="/research-node.html">Research Node</a>
-      <a href="/contact.html">Contact</a>
-      <a href="/atorai/index.html">ĀTØR-AI</a>
-    </nav>
+    <main class="atorai-main">
+      <div id="chat-log" class="chat-log"></div>
+
+      <form id="chat-form" class="chat-form">
+        <input
+          id="user-input"
+          class="chat-input"
+          type="text"
+          placeholder="Speak to the Mind..."
+          autocomplete="off"
+        />
+        <button id="send-btn" class="chat-send" type="submit">→</button>
+      </form>
+    </main>
   </div>
-</header>
+</body>
+</html>
