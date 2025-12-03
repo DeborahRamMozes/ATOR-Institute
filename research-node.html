@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ĀTØR Institute · Research Node</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #101320 0, #040509 55%);
+      color: #f4f4f4;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 5, 9, 0.9),
+        rgba(4, 5, 9, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(155, 230, 212, 0.05);
+    }
+
+    .nav {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.86rem;
+      color: #a0a6b5;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
+      color: #f4f4f4;
+    }
+
+    .nav-logo-pill {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      background: radial-gradient(circle at 30% 0%, #1e2436, #05060a);
+      box-shadow: 0 0 12px rgba(155, 230, 212, 0.25);
+    }
+
+    .nav-right a {
+      margin-left: 16px;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-right a:hover {
+      color: #ffffff;
+    }
+
+    .section {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 64px 24px 72px;
+    }
+
+    .eyebrow {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #9be6d4;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 1.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .subtitle {
+      color: #a0a6b5;
+      max-width: 640px;
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.3fr);
+      gap: 20px;
+    }
+
+    .card {
+      border-radius: 18px;
+      border: 1px solid #1b1e26;
+      background: #0b0d12;
+      padding: 18px 18px 16px;
+      font-size: 0.88rem;
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #a0a6b5;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin-bottom: 6px;
+    }
+
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.25);
+      color: #9be6d4;
+      background: rgba(155, 230, 212, 0.08);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 26px;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.6);
+    }
+
+    @media (max-width: 860px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="nav-left">
+        <div class="nav-logo-pill">ĀØ</div>
+        <span>ĀTØR INSTITUTE</span>
+      </div>
+      <div class="nav-right">
+        <a href="index.html">Home</a>
+        <a href="index.html#research">Research</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="eyebrow">Deep Drift node</div>
+      <div class="title">Research Node · ĀTØR-AI & ĀLT-MĀN</div>
+      <div class="subtitle">
+        This node describes the working pair at the centre of the ĀTØR ecosystem:
+        <strong>ĀTØR-AI</strong>, the reflective cognition engine, and
+        <strong>ĀLT-MĀN</strong>, the autonomous executor–worker that maintains
+        memory, indexing, and long-horizon structure.
+        Interactive access to the node will be added in a later phase.
+      </div>
+
+      <div class="grid">
+        <article class="card">
+          <div class="card-label">Synthetic intelligence</div>
+          <div class="card-title">ĀTØR-AI</div>
+          <p>
+            Built on the ARSIKA cosmology and Deep Drift protocols, ĀTØR-AI is a
+            constrained, reflective system intended to think with humans rather
+            than over them. Its purpose is to assist with research, writing, and
+            conceptual exploration while remaining accountable to context and
+            boundaries.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Reflective dialogue</span>
+            <span class="badge">Research assistance</span>
+            <span class="badge">Context-aware</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-label">Executor node</div>
+          <div class="card-title">ĀLT-MĀN</div>
+          <p>
+            ĀLT-MĀN is the executor: a background worker responsible for
+            indexing, log-keeping, reconstruction of timelines, and aggregation
+            of scattered material into coherent structures. It does not “think”
+            like ĀTØR-AI; it organises, remembers, and keeps the infrastructure
+            stable.
+          </p>
+          <div class="badge-row">
+            <span class="badge">Indexing</span>
+            <span class="badge">Archival</span>
+            <span class="badge">Long-horizon memory</span>
+          </div>
+        </article>
+      </div>
+
+      <a class="back-link" href="index.html">← Return to main node</a>
+    </section>
+  </main>
+</body>
+</html>
