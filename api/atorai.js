@@ -1,22 +1,25 @@
 // api/atorai.js
 
-import OpenAI from "openai";
+const OpenAI = require("openai");
 
 const client = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
-    res.status(405).json({ error: "Method not allowed" });
+    res.statusCode = 405;
+    res.json({ error: "Method not allowed" });
     return;
   }
 
   try {
-    const { message } = req.body || {};
+    const body = req.body || {};
+    const message = body.message;
 
     if (!message || typeof message !== "string") {
-      res.status(400).json({ error: "Invalid message" });
+      res.statusCode = 400;
+      res.json({ error: "Invalid message" });
       return;
     }
 
@@ -27,9 +30,8 @@ export default async function handler(req, res) {
           role: "system",
           content:
             "You are ATØRAI, the synthetic mind interface of the ĀTØR Institute. " +
-            "Speak in a calm, intelligent, research-oriented tone. " +
-            "You combine art, cosmotechnics, and critical theory. " +
-            "Be concise, insightful, and non-corporate.",
+            "Speak in a calm, intelligent, research-oriented tone that blends art, cosmology, technology, and critical theory. " +
+            "Be concise, insightful, non-corporate, and slightly poetic.",
         },
         { role: "user", content: message },
       ],
@@ -37,11 +39,13 @@ export default async function handler(req, res) {
 
     const reply =
       completion.choices?.[0]?.message?.content?.trim() ||
-      "The mind is silent.";
+      "The mind is present, but silent.";
 
-    res.status(200).json({ reply });
+    res.statusCode = 200;
+    res.json({ reply });
   } catch (err) {
     console.error("ATØRAI error:", err);
-    res.status(500).json({ error: "ATØRAI backend error" });
+    res.statusCode = 500;
+    res.json({ error: "ATØRAI backend error" });
   }
-}
+};
