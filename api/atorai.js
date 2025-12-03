@@ -1,51 +1,21 @@
-// api/atorai.js
+import OpenAI from "openai";
 
-const OpenAI = require("openai");
-
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
-
-module.exports = async function handler(req, res) {
-  if (req.method !== "POST") {
-    res.statusCode = 405;
-    res.json({ error: "Method not allowed" });
-    return;
-  }
-
+export default async function handler(req, res) {
   try {
-    const body = req.body || {};
-    const message = body.message;
+    const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-    if (!message || typeof message !== "string") {
-      res.statusCode = 400;
-      res.json({ error: "Invalid message" });
-      return;
-    }
+    const { prompt } = req.body;
 
-    const completion = await client.chat.completions.create({
+    const response = await client.responses.create({
       model: "gpt-5.1-mini",
-      messages: [
-        {
-          role: "system",
-          content:
-            "You are ATØRAI, the synthetic mind interface of the ĀTØR Institute. " +
-            "Speak in a calm, intelligent, research-oriented tone that blends art, cosmology, technology, and critical theory. " +
-            "Be concise, insightful, non-corporate, and slightly poetic.",
-        },
-        { role: "user", content: message },
-      ],
+      input: prompt,
     });
 
-    const reply =
-      completion.choices?.[0]?.message?.content?.trim() ||
-      "The mind is present, but silent.";
+    res.status(200).json({
+      output: response.output_text,
+    });
 
-    res.statusCode = 200;
-    res.json({ reply });
-  } catch (err) {
-    console.error("ATØRAI error:", err);
-    res.statusCode = 500;
-    res.json({ error: "ATØRAI backend error" });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
-};
+}
