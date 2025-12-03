@@ -1,4 +1,7 @@
 document.getElementById("send-btn").addEventListener("click", sendMessage);
+document.getElementById("user-input").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") sendMessage();
+});
 
 async function sendMessage() {
   const input = document.getElementById("user-input");
@@ -8,14 +11,18 @@ async function sendMessage() {
   appendMessage("user", text);
   input.value = "";
 
-  const response = await fetch("https://your-backend-url/api/atorai", {
-    method: "POST",
-    headers: { "Content-Type": "application/json"},
-    body: JSON.stringify({ message: text })
-  });
+  try {
+    const response = await fetch("/api/atorai", {
+      method: "POST",
+      headers: { "Content-Type": "application/json"},
+      body: JSON.stringify({ message: text })
+    });
 
-  const data = await response.json();
-  appendMessage("atorai", data.reply);
+    const data = await response.json();
+    appendMessage("atorai", data.reply || "[empty reply]");
+  } catch (err) {
+    appendMessage("atorai", "[connection error to ATØR core]");
+  }
 }
 
 function appendMessage(sender, text) {
