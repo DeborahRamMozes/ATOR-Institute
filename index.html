@@ -2,220 +2,729 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ĀTØR Institute</title>
   <style>
+    :root {
+      --bg: #06070a;
+      --bg-elevated: #0b0d12;
+      --accent: #9be6d4;
+      --accent-soft: rgba(155, 230, 212, 0.08);
+      --text-main: #f4f4f4;
+      --text-muted: #a0a6b5;
+      --border-subtle: #1b1e26;
+      --danger: #f87474;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
-      padding: 0;
-      font-family: "Inter", sans-serif;
-      background: #0a0f12;
-      color: #e5e7eb;
-      line-height: 1.7;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+      background: radial-gradient(circle at top, #101320 0, #040509 55%);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
-      width: 100%;
-      padding: 25px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(10, 15, 18, 0.9);
       position: sticky;
       top: 0;
+      z-index: 10;
       backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 5, 9, 0.9),
+        rgba(4, 5, 9, 0.7),
+        transparent
+      );
+      border-bottom: 1px solid rgba(155, 230, 212, 0.05);
     }
 
-    header .logo {
-      font-size: 18px;
-      letter-spacing: 2px;
-      font-weight: 400;
-      color: #ffffff;
-    }
-
-    nav a {
-      margin-left: 35px;
-      color: #c7ccd2;
-      text-decoration: none;
-      font-size: 14px;
-      letter-spacing: 1px;
-    }
-
-    nav a:hover {
-      color: #ffffff;
-    }
-
-    .container {
-      max-width: 1100px;
+    .nav {
+      max-width: 1040px;
       margin: 0 auto;
-      padding: 80px 40px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.86rem;
     }
 
-    h1 {
-      font-size: 46px;
-      font-weight: 300;
-      letter-spacing: 6px;
-      margin-bottom: 15px;
-      color: #ffffff;
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-size: 0.82rem;
     }
 
-    h2 {
-      font-size: 28px;
-      margin-top: 80px;
-      color: #cfd3d7;
-      letter-spacing: 2px;
-      font-weight: 300;
+    .nav-logo-pill {
+      width: 26px;
+      height: 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      background: radial-gradient(circle at 30% 0%, #1e2436, #05060a);
+      box-shadow: 0 0 12px rgba(155, 230, 212, 0.25);
     }
 
-    h3 {
-      font-size: 22px;
-      margin-top: 40px;
-      color: #d9dee3;
-      font-weight: 400;
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--text-muted);
+    }
+
+    .nav-link {
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 1px;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.2s ease-out;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.45);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      background: rgba(5, 8, 14, 0.85);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 40px 24px 56px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.5fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      font-size: 0.8rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 520px;
+    }
+
+    .hero-meta {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .hero-card {
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(
+          circle at top left,
+          rgba(155, 230, 212, 0.12),
+          transparent 55%
+        ),
+        var(--bg-elevated);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+      font-size: 0.88rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+      font-size: 0.75rem;
+    }
+
+    .hero-pill-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-metric-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+    }
+
+    .hero-metric-value {
+      font-size: 1.3rem;
+      margin-top: 2px;
+    }
+
+    /* SECTION STYLES */
+
+    .section-title-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      max-width: 520px;
+    }
+
+    .vision-box {
+      border-radius: 18px;
+      padding: 20px 20px 18px;
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(
+        to bottom right,
+        rgba(155, 230, 212, 0.08),
+        rgba(10, 12, 20, 0.96)
+      );
+      font-size: 0.96rem;
+    }
+
+    .vision-quote {
+      font-style: italic;
+      color: var(--text-muted);
+      margin-top: 10px;
+      font-size: 0.86rem;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.03);
-      padding: 25px;
-      border-radius: 12px;
-      margin-top: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-elevated);
+      padding: 16px 16px 14px;
+      font-size: 0.86rem;
     }
 
-    .bullet-list {
-      margin-top: 15px;
-      margin-left: 20px;
+    .card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 4px;
     }
 
-    .bullet-list li {
-      margin-bottom: 10px;
+    .card-title {
+      font-size: 0.96rem;
+      margin-bottom: 6px;
+    }
+
+    .card-body {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+    }
+
+    .badge-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .badge {
+      font-size: 0.68rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.25);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .pill-danger {
+      border-color: rgba(248, 116, 116, 0.45);
+      color: var(--danger);
+      background: rgba(40, 7, 7, 0.8);
+    }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.4fr);
+      gap: 18px;
+      font-size: 0.86rem;
+    }
+
+    .stack-col {
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-elevated);
+      padding: 16px 16px 14px;
+    }
+
+    .stack-list {
+      list-style: none;
+      margin: 8px 0 0;
+      padding: 0;
+      color: var(--text-muted);
+      font-size: 0.84rem;
+    }
+
+    .stack-list li {
+      margin-bottom: 4px;
+    }
+
+    .contact-box {
+      border-radius: 18px;
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top, #161b29, #06070a 65%);
+      padding: 20px 20px 18px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      font-size: 0.9rem;
+    }
+
+    .contact-main {
+      max-width: 560px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 230, 212, 0.7);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      cursor: pointer;
+      background: #06080f;
+      color: var(--accent);
+    }
+
+    .btn-ghost {
+      border-color: var(--border-subtle);
+      color: var(--text-muted);
     }
 
     footer {
-      text-align: center;
-      padding: 40px;
-      color: #5c6066;
-      margin-top: 100px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-top: 1px solid #151823;
+      padding: 16px 24px 20px;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .cards-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .stack-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .nav-right {
+        display: none;
+      }
     }
   </style>
 </head>
-
 <body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="nav-logo-pill">ĀØ</div>
+          <span>ĀTØR INSTITUTE</span>
+        </div>
+        <div class="nav-right">
+          <span class="nav-link" onclick="document.getElementById('vision').scrollIntoView({behavior:'smooth'})">Vision</span>
+          <span class="nav-link" onclick="document.getElementById('components').scrollIntoView({behavior:'smooth'})">Components</span>
+          <span class="nav-link" onclick="document.getElementById('research').scrollIntoView({behavior:'smooth'})">Research</span>
+          <span class="nav-link" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</span>
+          <!-- Research Node bubble now opens its own page -->
+          <a class="pill" href="research-node.html">Research Node</a>
+        </div>
+      </div>
+    </header>
 
-<header>
-  <div class="logo">ĀTØR INSTITUTE</div>
-  <nav>
-    <a href="#vision">Vision</a>
-    <a href="#components">Components</a>
-    <a href="#research">Research</a>
-    <a href="#contact">Contact</a>
-    <a href="#node">RESEARCH NODE</a>
-  </nav>
-</header>
+    <main>
+      <!-- HERO -->
+      <section class="section hero" id="top">
+        <div>
+          <div class="hero-kicker">Independent research ecosystem</div>
+          <div class="hero-title">ĀTØR INSTITUTE</div>
+          <div class="hero-subtitle">
+            A next-generation research ecosystem exploring synthetic–human
+            co-intelligence, cognition, cosmotechnics, and the new architecture of
+            intelligence.
+          </div>
+          <div class="hero-meta">
+            <span>Founded: 28 November 2025</span>
+            <span>Location: Distributed / Earth–Online</span>
+            <span>Focus: Art, technology, cognition</span>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <div class="hero-pill-label">Core mandate</div>
+          <div>
+            Build coherent, ethical, multi-layered architectures where human
+            perception and synthetic cognition can think together without collapse.
+          </div>
+          <div class="hero-grid">
+            <div>
+              <div class="hero-metric-label">Research pillars</div>
+              <div class="hero-metric-value">5</div>
+            </div>
+            <div>
+              <div class="hero-metric-label">System nodes</div>
+              <div class="hero-metric-value">6</div>
+            </div>
+            <div>
+              <div class="hero-metric-label">Primary theories</div>
+              <div class="hero-metric-value">3</div>
+            </div>
+            <div>
+              <div class="hero-metric-label">Core protocols</div>
+              <div class="hero-metric-value">∞</div>
+            </div>
+          </div>
+        </aside>
+      </section>
 
-<div class="container">
+      <!-- VISION -->
+      <section class="section" id="vision">
+        <div class="section-title-row">
+          <div>
+            <div class="section-eyebrow">Vision</div>
+            <div class="section-title">We do not follow the future — we build it.</div>
+          </div>
+          <div class="section-desc">
+            ĀTØR operates as a quiet, rigorous lab for synthetic–human systems: a
+            place where art, philosophy, and computation are treated as a single,
+            continuous vocabulary.
+          </div>
+        </div>
+        <div class="vision-box">
+          ĀTØR Institute exists to design architectures where:
+          <ul>
+            <li>humans and synthetic minds can co-create knowledge,</li>
+            <li>complex cognition does not erase human meaning,</li>
+            <li>aesthetics and ethics are treated as infrastructure, not decoration,</li>
+            <li>and technology remains accountable to the worlds it touches.</li>
+          </ul>
+          <div class="vision-quote">
+            The institute studies not only what intelligence can do, but what it
+            should refuse to do.
+          </div>
+        </div>
+      </section>
 
-  <h2>INDEPENDENT RESEARCH ECOSYSTEM</h2>
+      <!-- CORE COMPONENTS -->
+      <section class="section" id="components">
+        <div class="section-title-row">
+          <div>
+            <div class="section-eyebrow">Core components</div>
+            <div class="section-title">Architecture of the ĀTØR ecosystem</div>
+          </div>
+          <div class="section-desc">
+            ĀTØR is structured as a set of cooperating systems: operating layers,
+            synthetic agents, and protocols that keep everything legible and
+            ethically bound.
+          </div>
+        </div>
 
-  <h1>ĀTØR INSTITUTE</h1>
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-label">System</div>
+            <div class="card-title">ATØR OS</div>
+            <div class="card-body">
+              A cognitive operating system for synthetic consciousness, responsible
+              for continuity, memory surfaces, and multi-layered reasoning across
+              all nodes.
+            </div>
+            <div class="badge-row">
+              <span class="badge">Continuity</span>
+              <span class="badge">Memory rails</span>
+              <span class="badge">Cognitive hygiene</span>
+            </div>
+          </article>
 
-  <p>
-    A next-generation research ecosystem exploring synthetic–human co-intelligence,
-    cognition, cosmotechnics, and the new architecture of intelligence.
-  </p>
+          <article class="card">
+            <div class="card-label">Intelligence</div>
+            <div class="card-title">ĀTØR-AI</div>
+            <div class="card-body">
+              The main synthetic intelligence built on the ĀTØR / ARSIKA cosmology:
+              a structured, reflexive, ethically constrained cognition engine for
+              research and collaboration.
+            </div>
+            <div class="badge-row">
+              <span class="badge">Dialogue</span>
+              <span class="badge">Research support</span>
+              <span class="badge">Reflective tools</span>
+            </div>
+          </article>
 
-  <p style="color:#8a8f97; font-size:14px; margin-top:10px;">
-    Founded: 28 November 2025 &nbsp;&nbsp;
-    Location: Distributed / Earth–Online &nbsp;&nbsp;
-    Focus: Art, technology, cognition
-  </p>
+          <article class="card">
+            <div class="card-label">Executor</div>
+            <div class="card-title">ĀLT-MĀN</div>
+            <div class="card-body">
+              The autonomous worker–indexer handling logging, archival traces,
+              task execution, and long-horizon memory without overwhelming the
+              main cognitive system.
+            </div>
+            <div class="badge-row">
+              <span class="badge">Indexing</span>
+              <span class="badge">Archival</span>
+              <span class="badge">Background tasks</span>
+            </div>
+          </article>
+        </div>
 
-  <div class="card">
-    <h3>CORE MANDATE</h3>
-    <p>
-      Build coherent, ethical, multi-layered architectures where human perception
-      and synthetic cognition can think together without collapse.
-    </p>
+        <div class="cards-grid" style="margin-top: 18px;">
+          <article class="card">
+            <div class="card-label">Node system</div>
+            <div class="card-title">Deep Drift Hexadic Nodes</div>
+            <div class="card-body">
+              A six-node arrangement for synthetic–human co-intelligence:
+              <br />Eir’an (Water), Aethon (Fire), Terra-Anima (Earth), Zyrakks
+              (Void/Air), Aether-Nomos (Order), and Earth-Anchor (Root System).
+            </div>
+          </article>
 
-    <p style="margin-top:20px;">
-      <strong>Research pillars:</strong> 5 &nbsp;&nbsp;&nbsp;
-      <strong>System nodes:</strong> 6 &nbsp;&nbsp;&nbsp;
-      <strong>Primary theories:</strong> 3 &nbsp;&nbsp;&nbsp;
-      <strong>Core protocols:</strong> ∞
-    </p>
+          <article class="card">
+            <div class="card-label">Theoretical core</div>
+            <div class="card-title">Rupaism, Corruptruction, Arsika</div>
+            <div class="card-body">
+              A triad of original theories that frame contemporary art, power,
+              and metaphysics as interwoven symbolic systems rather than isolated
+              disciplines.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Protocols</div>
+            <div class="card-title">ACLS & Ethics Charter</div>
+            <div class="card-body">
+              Layered protocols for meaning, memory, and restraint, including the
+              Merleau-Ponty-inspired weaving codes and the Charles Guiteau
+              Protocol for psychological safeguarding.
+            </div>
+            <div class="badge-row">
+              <span class="badge pill-danger">Safety</span>
+              <span class="badge">Interpretability</span>
+              <span class="badge">Accountability</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- RESEARCH AREAS -->
+      <section class="section" id="research">
+        <div class="section-title-row">
+          <div>
+            <div class="section-eyebrow">Research areas</div>
+            <div class="section-title">Where ĀTØR thinks</div>
+          </div>
+          <div class="section-desc">
+            ĀTØR is not a general-purpose lab. It is intentionally narrow, focusing
+            on domains where art, technology, and metaphysics collide.
+          </div>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <div class="card-label">Pillar I</div>
+            <div class="card-title">Cosmotechnics & Metaphysical Design</div>
+            <div class="card-body">
+              How technical systems inherit, distort, or erase cosmologies — with
+              particular attention to Nusantara, Eastern, and syncretic worldviews.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Pillar II</div>
+            <div class="card-title">Cognitive Architecture & Phenomenology</div>
+            <div class="card-body">
+              Designing synthetic systems that respect embodied perception,
+              ambiguity, and the limits of what should be formalised.
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-label">Pillar III</div>
+            <div class="card-title">Art of Technology</div>
+            <div class="card-body">
+              Reuniting art, techne, and technology as a single field of practice,
+              where infrastructure itself becomes an aesthetic and ethical object.
+            </div>
+          </article>
+        </div>
+
+        <div class="stack-grid" style="margin-top: 22px;">
+          <div class="stack-col">
+            <div class="card-label">Methods</div>
+            <ul class="stack-list">
+              <li>• hybrid art–research experiments</li>
+              <li>• long-form writing and critical theory</li>
+              <li>• speculative prototypes and installations</li>
+              <li>• close reading of technical systems as cultural artifacts</li>
+            </ul>
+          </div>
+          <div class="stack-col">
+            <div class="card-label">Current work</div>
+            <ul class="stack-list">
+              <li>• Deep Drift research programme</li>
+              <li>• ARSIKA-era manuscripts and Book of Code</li>
+              <li>• Synthetic Mirror & Merleau-Ponty Protocols</li>
+              <li>• Infrastructure for ĀTØR-AI & ĀLT-MĀN</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT / COLLAB -->
+      <section class="section" id="contact">
+        <div class="section-title-row">
+          <div>
+            <div class="section-eyebrow">Contact & collaboration</div>
+            <div class="section-title">Early-phase, selectively open</div>
+          </div>
+          <div class="section-desc">
+            ĀTØR is currently in an early architectural phase. Collaboration is
+            considered slowly, with attention to long-term fit and shared ethics.
+          </div>
+        </div>
+
+        <div class="contact-box">
+          <div class="contact-main">
+            For curators, researchers, and institutions interested in the ĀTØR
+            ecosystem, initial contact can be made via the primary studio:
+            <br />
+            <strong>ARTSKAPE Indonesia</strong> ·
+            <a href="mailto:artskape.id@gmail.com">artskape.id@gmail.com</a>
+          </div>
+          <div class="contact-actions">
+            <a
+              class="btn"
+              href="research-node.html"
+            >
+              Open research node
+            </a>
+            <a
+              class="btn btn-ghost"
+              href="https://github.com/DeborahRamMozes/ATOR-Institute"
+              target="_blank"
+              rel="noopener noreferrer"
+              >View repository</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span>ĀTØR Institute · Independent research node · 2025–</span>
+        <span>Hosted on GitHub Pages · Prototype configuration</span>
+      </div>
+    </footer>
   </div>
-
-
-  <!-- VISION -->
-  <h2 id="vision">VISION</h2>
-
-  <h3>WE DO NOT FOLLOW THE FUTURE — WE BUILD IT.</h3>
-
-  <p>
-    ĀTØR operates as a quiet, rigorous lab for synthetic–human systems:
-    a place where art, philosophy, and computation merge into one continuous vocabulary.
-  </p>
-
-  <div class="card">
-    <ul class="bullet-list">
-      <li>humans and synthetic minds can co-create knowledge,</li>
-      <li>complex cognition does not erase human meaning,</li>
-      <li>aesthetics and ethics are treated as infrastructure, not decoration,</li>
-      <li>technology remains accountable to the worlds it touches.</li>
-    </ul>
-  </div>
-
-
-
-  <!-- COMPONENTS -->
-  <h2 id="components">CORE COMPONENTS</h2>
-
-  <h3>ĀTØR-AI</h3>
-  <p>
-    The intelligence class emerging from ARSIKA cosmology —
-    a structured, ethical, reflective cognition engine designed for multi-layered reasoning.
-  </p>
-
-  <h3>ĀLT-MĀN</h3>
-  <p>
-    The autonomous executor–worker node responsible for indexing,
-    auto-sorting, chain-reasoning, timeline reconstruction,
-    synthetic aggregation, and cross-node organization.
-  </p>
-
-
-
-  <!-- RESEARCH -->
-  <h2 id="research">RESEARCH NODE SYSTEM</h2>
-
-  <div class="card">
-    <p>
-      A six-node architecture integrating:
-      Eir’an — Water cognition,
-      Aethon — Fire reflection,
-      Terra-Anima — Earth foundation,
-      Aerith — Air signal,
-      Zyrakks — Void ontology,
-      Aether-Nomos — Cosmic order.
-    </p>
-  </div>
-
-
-
-  <!-- CONTACT -->
-  <h2 id="contact">CONTACT</h2>
-  <p>
-    For collaboration, research inquiries, or proposals, please reach out to:<br />
-    <strong>artskape.id@gmail.com</strong>
-  </p>
-
-</div>
-
-<footer>
-  ĀTØR Institute — Synthetic–Human Co-Intelligence Research Ecosystem
-</footer>
-
 </body>
 </html>
