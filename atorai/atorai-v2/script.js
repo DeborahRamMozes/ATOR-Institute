@@ -1,7 +1,7 @@
 //--------------------------------------------------------------
 // ATØR-AI PARAMETERS
 //--------------------------------------------------------------
-const OPENAI_API_KEY = "YOUR_API_KEY_HERE";
+const OPENAI_API_KEY = "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";
 const MODEL = "gpt-4.1-mini"; 
 //--------------------------------------------------------------
 
