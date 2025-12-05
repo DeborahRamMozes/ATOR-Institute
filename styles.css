@@ -1,238 +1,62 @@
-/* ---------------------------------------------------------
-   GLOBAL
---------------------------------------------------------- */
+/* ============================================
+   NEON PASUNDAN GLOW STYLES
+   Color: #39ff14
+   Glow: Outer + soft inner aura
+   Applies ONLY to green text/elements
+   ============================================ */
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* GENERAL GREEN TEXT GLOW */
+.neon-green,
+.green,
+.text-green {
+    color: #39ff14 !important;
+    text-shadow:
+        0 0 3px #39ff14,
+        0 0 6px #39ff14,
+        0 0 9px #39ff14,
+        0 0 12px #39ff14;
 }
 
-body.site-body {
-  background: #070b0d;
-  color: #39ff14;
-  font-family: "Inter", sans-serif;
-  line-height: 1.6;
-}
-
-.page-shell {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-/* ---------------------------------------------------------
-   HEADER
---------------------------------------------------------- */
-
-.site-header {
-  width: 100%;
-  padding: 32px 0;
-}
-
-.nav-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  pointer-events: none; /* NOT clickable */
-}
-
-.logo-mark {
-    font-size: 22px;
+/* HEADINGS / TITLES THAT SHOULD GLOW */
+h1.neon-green,
+h2.neon-green,
+h3.neon-green,
+.neon-title {
+    color: #39ff14 !important;
     font-weight: 600;
-    color: #39ff14;
+    text-shadow:
+        0 0 5px #39ff14,
+        0 0 10px #39ff14,
+        0 0 20px #39ff14,
+        0 0 30px #39ff14;
+}
+
+/* SMALL LABELS OR METADATA TEXT */
+.label-green,
+.meta-green {
+    color: #39ff14 !important;
+    text-shadow:
+        0 0 4px #39ff14,
+        0 0 6px #39ff14,
+        0 0 8px #39ff14;
+}
+
+/* LINKS THAT ARE GREEN */
+a.neon-green,
+a.green {
+    color: #39ff14 !important;
+    text-decoration: none;
+    text-shadow:
+        0 0 4px #39ff14,
+        0 0 8px #39ff14,
+        0 0 12px #39ff14;
+}
+
+/* OPTIONAL: GLOWING BORDER FOR SPECIAL BOXES */
+.glow-box-green {
     border: 1px solid #39ff14;
-    padding: 4px 10px;
-    border-radius: 50%;
-    box-shadow: 0 0 12px rgba(95, 201, 196, 0.4);
-    margin-right: 10px;
-    letter-spacing: 1px;
-}
-
-.wordmark {
-  color: #39ff14;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
-.main-nav {
-  display: flex;
-  gap: 32px;
-}
-
-.main-nav a {
-  color: #39ff14;
-  font-size: 14px;
-  text-decoration: none;
-  transition: 0.2s ease;
-}
-
-.main-nav a:hover {
-  color: #0ef1c7;
-}
-
-/* ---------------------------------------------------------
-   HERO SECTION
---------------------------------------------------------- */
-
-.hero {
-  margin-top: 60px;
-  display: grid;
-  grid-template-columns: 1fr 360px;
-  gap: 80px;
-}
-
-.eyebrow {
-  font-size: 12px;
-  color: #0ef1c7;
-  letter-spacing: 0.15em;
-  margin-bottom: 20px;
-}
-
-.hero-title {
-  font-size: 56px;
-  font-weight: 300;
-  letter-spacing: 0.06em;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-
-.hero-lede {
-  max-width: 620px;
-  color: #a8b6b9;
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.hero-meta-row {
-  display: flex;
-  gap: 24px;
-  font-size: 13px;
-  color: #7f8e91;
-}
-
-/* ---------------------------------------------------------
-   MANDATE CARD
---------------------------------------------------------- */
-
-.mandate-card {
-  background: radial-gradient(circle at 20% 20%, #0f2a2a 0%, #081214 80%);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 20px;
-  padding: 28px;
-  color: #d4e3e3;
-}
-
-.mandate-label {
-  font-size: 12px;
-  color: #0ef1c7;
-  letter-spacing: 0.12em;
-  margin-bottom: 12px;
-}
-
-.mandate-text {
-  margin-bottom: 28px;
-  font-size: 14px;
-  color: #c7d5d6;
-}
-
-.mandate-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px 20px;
-}
-
-.mandate-item {
-  display: flex;
-  flex-direction: column;
-}
-
-.mandate-caption {
-  font-size: 12px;
-  color: #7ba0a3;
-  margin-bottom: 4px;
-}
-
-.mandate-value {
-  font-size: 20px;
-  color: #0ef1c7;
-  font-weight: 600;
-}
-
-/* ---------------------------------------------------------
-   VISION SECTION
---------------------------------------------------------- */
-
-.vision-block {
-  margin-top: 140px;
-  margin-bottom: 140px;
-}
-
-.section-header {
-  margin-bottom: 60px;
-}
-
-.section-title {
-  font-size: 32px;
-  font-weight: 400;
-  color: #ffffff;
-  max-width: 600px;
-}
-
-.vision-layout {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 80px;
-}
-
-.vision-text {
-  color: #a8b6b9;
-  font-size: 16px;
-  line-height: 1.7;
-  max-width: 600px;
-}
-
-.vision-list-card {
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.05);
-  border-radius: 18px;
-  padding: 32px;
-}
-
-.vision-card-title {
-  color: #cfd9da;
-  margin-bottom: 20px;
-}
-
-.vision-list-card ul {
-  list-style: disc;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  color: #a8b6b9;
-}
-
-.vision-list-card li {
-  margin-bottom: 10px;
-}
-
-.vision-footnote {
-  font-size: 12px;
-  color: #7b8c8d;
-}
-
-/* ---------------------------------------------------------
-   FOOTER
---------------------------------------------------------- */
-
-.site-footer {
-  padding: 60px 0;
-  text-align: center;
-  color: #71888b;
-  font-size: 13px;
+    box-shadow:
+        0 0 6px #39ff14,
+        0 0 12px #39ff14,
+        0 0 18px #39ff14;
 }
