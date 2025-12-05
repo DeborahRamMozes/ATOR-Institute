@@ -10,7 +10,7 @@
 
 body.site-body {
   background: #070b0d;
-  color: #cbd6d9;
+  color: #39ff14;
   font-family: "Inter", sans-serif;
   line-height: 1.6;
 }
@@ -56,7 +56,7 @@ body.site-body {
 }
 
 .wordmark {
-  color: #cbd6d9;
+  color: #39ff14;
   font-weight: 600;
   letter-spacing: 0.08em;
 }
