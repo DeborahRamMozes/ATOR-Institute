@@ -46,7 +46,7 @@ body.site-body {
 .logo-mark {
     font-size: 22px;
     font-weight: 600;
-    color: #c8f7f4;
+    color: #39ff14;
     border: 1px solid #5fc9c4;
     padding: 4px 10px;
     border-radius: 50%;
@@ -67,7 +67,7 @@ body.site-body {
 }
 
 .main-nav a {
-  color: #a4c5c8;
+  color: #39ff14;
   font-size: 14px;
   text-decoration: none;
   transition: 0.2s ease;
