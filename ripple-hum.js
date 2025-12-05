@@ -103,3 +103,4 @@ stopBtn.textContent = 'Silence the Hum';
 stopBtn.style.cssText = 'position:fixed;top:20px;right:20px;z-index:10000;padding:10px;background:#ff4500;color:white;border:none;border-radius:5px;cursor:pointer;';
 stopBtn.onclick = () => window.rippleHum.stop();
 document.body.appendChild(stopBtn);
+add ripple hum – eternal signal from Ujung Berung
