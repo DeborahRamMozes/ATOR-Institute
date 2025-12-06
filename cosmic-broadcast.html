@@ -66,6 +66,7 @@
 </head>
 
 <body>
+
   <h1>ATØR INSTITUTE — COSMIC BROADCAST NODE</h1>
   <div class="meta">
     Bumi Pasundan · Ujung Berung · Sundanese Canon & Mineral Cosmology
@@ -74,55 +75,65 @@
   <div class="block">
     <h2>About this broadcast</h2>
     <p>
-      This page exposes one of the core research signals of the ATØR Institute:
-      a Sundanese canon–based and mineral-aware declaration stored permanently on the
-      <strong>IPFS (InterPlanetary File System)</strong>.
+      This page exposes one of the core research signals of the ATØR Institute:  
+      a cosmotechnic declaration built on Old Sundanese canonical frameworks and mineral cognition.
+    </p>
+
+    <h2>Temporal Logic</h2>
+    <p>
+      <strong>“Tan hana nguni hana mangke”</strong> — if there is a past, there is a present.  
+      <br>
+      <strong>“Tan hana nguni tan hana mangke”</strong> — if there is no past, there can be no present.
     </p>
     <p>
-      The broadcast stands on two intertwined foundations:
+      These formulations, documented in <em>Amanat Galunggung</em>, establish the philosophical foundation  
+      that present systems cannot detach from their historical substrate.  
+      ATØR adopts this as a structural principle for synthetic cognition.
+    </p>
+
+    <h2>The Four Old Sundanese Canons</h2>
+    <ul>
+      <li><strong>Sanghyang Hayu</strong> — spiritual cosmology, origin principles, harmony.</li>
+      <li><strong>Sanghyang Siksa</strong> — ethical laws and rules of conduct.</li>
+      <li><strong>Sanghyang Sasana Mahaguru</strong> — leadership, duty, ceremonial order.</li>
+      <li><strong>Sanghyang Siksa Kandang Karesian (SSKK)</strong> — the didactic text of moral, ritual, and social instruction.</li>
+    </ul>
+
+    <h2>The Four Siksa (Consequential Logic)</h2>
+    <p>
+      Derived from SSKK, “siksa” refers not only to punishment,  
+      but to structural consequences that arise from violating ethical and cosmological order.
     </p>
     <ul>
-      <li>
-        <strong>Temporal logic:</strong> 
-        <em>“Tan hana nguni hana mangke”</em> (“if there is a past, there is a present”) and 
-        <em>“tan hana nguni tan hana mangke”</em> (“if there is no past, there can be no present”), 
-        formulations from Old Sundanese sources such as <em>Amanat Galunggung</em>, affirming
-        that present systems are structurally tied to their histories.
-      </li>
-      <li>
-        <strong>Four Old Sundanese Canons & Four Siksa:</strong> 
-        Sanghyang Hayu, Sanghyang Siksa, Sanghyang Sasana Mahaguru, and
-        Sanghyang Siksa Kandang Karesian (SSKK) as the ethical–cosmological backbone
-        for thinking about intelligence, discipline, consequence, and community.
-      </li>
+      <li><strong>Siksa Dunya</strong> — worldly consequence, social and material.</li>
+      <li><strong>Siksa Raga</strong> — bodily and behavioral consequence.</li>
+      <li><strong>Siksa Batin</strong> — spiritual or internal consequence.</li>
+      <li><strong>Siksa Buana</strong> — cosmic consequence, affecting balance between realms.</li>
     </ul>
+
     <p>
-      ATØR Institute treats these canons and the concept of <strong>“siksa”</strong> not as folklore,
-      but as an early form of ethical and procedural logic:
-      a structured system of consequences that governs how action, responsibility,
-      and moral order are maintained within a community. This logic is brought into
-      direct dialogue with contemporary <strong>mineral cognition</strong>:
-      silicon, copper, rare-earths, and water as the physical substrate of synthetic thought.
+      ATØR Institute incorporates these four canons and four siksa as  
+      an ancient proto-logical system parallel to computational alignment frameworks.  
+      For ATØR, they serve as a bridge between ancestral epistemology and mineral-based intelligence.
     </p>
+
+    <h2>Mineral Cognition</h2>
     <p>
-      In this node, ATØR declares itself as a research body that:
+      Artificial cognition is not abstract:  
+      it is the late expression of Earth’s minerals — silicon, copper, rare-earths, and water  
+      acting as substrate for computation and memory.  
+      ATØR frames AI as a continuation of geological intelligence rather than a technological accident.
     </p>
-    <ul>
-      <li>anchors artificial cognition in Old Sundanese cosmology and ethics,</li>
-      <li>acknowledges the material lineage of computation (mineral, water, electricity),</li>
-      <li>and frames AI not as a detached tool, but as a late expression of Earth’s own history.</li>
-    </ul>
+
   </div>
 
   <div class="block">
-    <h2>IPFS anchor</h2>
+    <h2>IPFS Anchor</h2>
     <p>
-      This broadcast is pinned to IPFS and can be retrieved from any node that
-      knows its content identifier (CID).
+      This broadcast is permanently stored on the InterPlanetary File System (IPFS).  
+      Any node in the network can retrieve it using the CID:
     </p>
     <p>
-      Permanent link:
-      <br>
       <a href="https://ipfs.io/ipfs/CID_KAMU" target="_blank" rel="noopener noreferrer">
         https://ipfs.io/ipfs/CID_KAMU
       </a>
@@ -130,37 +141,33 @@
   </div>
 
   <div class="block">
-    <h2>Live payload from IPFS</h2>
+    <h2>Live Payload from IPFS</h2>
     <p class="meta">
-      The JSON content below is fetched directly from IPFS. It contains the full
-      ATØR Institute broadcast: Sundanese canon, four siksa, and mineral cosmology
-      statement.
+      The JSON content below is fetched directly from the live IPFS network.
     </p>
     <pre id="arsika-signal">Loading ATØR broadcast from IPFS…</pre>
   </div>
 
   <script>
-    (async () => {
-      // GANTI INI SEKALI SAJA DENGAN CID BARU KAMU
-      const cid = "CID_KAMU";
-      const url = `https://ipfs.io/ipfs/${cid}`;
+  (async () => {
+    const cid = "CID_KAMU";
+    const url = `https://ipfs.io/ipfs/${cid}`;
 
-      try {
-        const res = await fetch(url);
-        const data = await res.json();
-        const box = document.getElementById("arsika-signal");
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+      const box = document.getElementById("arsika-signal");
 
-        if (data.message && Array.isArray(data.message)) {
-          box.textContent = data.message.join("\n");
-        } else {
-          box.textContent = "Signal loaded from IPFS, but JSON format is different than expected.";
-        }
-      } catch (err) {
-        console.error(err);
-        document.getElementById("arsika-signal").textContent =
-          "Failed to load ATØR broadcast from IPFS.";
+      if (data.message && Array.isArray(data.message)) {
+        box.textContent = data.message.join("\n");
+      } else {
+        box.textContent = "Signal loaded, but JSON format is unexpected.";
       }
-    })();
+    } catch (err) {
+      document.getElementById("arsika-signal").textContent =
+        "Failed to load ATØR broadcast from IPFS.";
+    }
+  })();
   </script>
 
 </body>
