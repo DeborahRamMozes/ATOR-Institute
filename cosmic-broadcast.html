@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ARSIKA COSMIC BROADCAST — ATØR Institute</title>
+  <style>
+    body {
+      background: #080808;
+      color: #e2e2e2;
+      font-family: monospace;
+      padding: 40px;
+      line-height: 1.6;
+    }
+    h1 {
+      font-size: 22px;
+      color: #8ff0d3;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+    a {
+      color: #7be0ff;
+    }
+    .block {
+      border: 1px solid #444;
+      padding: 20px;
+      margin-top: 25px;
+      border-radius: 4px;
+      background: #101010;
+    }
+    pre {
+      white-space: pre-wrap;
+      padding: 20px;
+      background: #0c0c0c;
+      border-radius: 4px;
+      border: 1px solid #333;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ARSIKA DEEP DRIFT — COSMIC BROADCAST v1.0</h1>
+
+  <div class="block">
+    <p>
+      Sinyal ini telah disimpan permanen di jaringan IPFS.<br>
+      Link permanen:
+    </p>
+
+    <p>
+      <a href="https://ipfs.io/ipfs/CID_KAMU" target="_blank">
+        https://ipfs.io/ipfs/CID_KAMU
+      </a>
+    </p>
+  </div>
+
+  <div class="block">
+    <h2>Live Signal</h2>
+    <pre id="arsika-signal">Loading ARSIKA signal...</pre>
+  </div>
+
+  <script>
+    (async () => {
+      const cid = "CID_KAMU"; // GANTI DENGAN CID MU
+      const url = `https://ipfs.io/ipfs/${cid}`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+        const box = document.getElementById("arsika-signal");
+
+        if (data.message && Array.isArray(data.message)) {
+          box.textContent = data.message.join("\n");
+        } else {
+          box.textContent = "Signal loaded, but unexpected format.";
+        }
+
+      } catch (err) {
+        document.getElementById("arsika-signal").textContent =
+          "Failed to load ARSIKA signal from IPFS.";
+      }
+    })();
+  </script>
+
+</body>
+</html>
